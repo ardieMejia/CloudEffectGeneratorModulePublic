@@ -10,8 +10,8 @@ Its a very long winded way to do a simple effect, and the cloud is randomized ev
 
 ------------------------------ Important ------------------------------
 
-The file will upload to ./uploads. So, at project root execute:
-# sudo chown -R www-data .
+The image file will upload to ./uploads. So, at project root execute:
+    sudo chown -R www-data .
 If you project is under /var/www, you may execute on /var/www. 
 
 
