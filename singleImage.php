@@ -40,7 +40,7 @@ $var1=preg_split("/[\/]/",$completeFileString);
 <html lang="en"> 
     <head>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="src-css/Skeleton-2.0.4/css/slightskeleton.css">
+        <link rel="stylesheet" href="src-css/slightskeleton.css">
         <script src="./src-js/jquery-3.3.1.js"></script>
         <style>
          .navbar{
