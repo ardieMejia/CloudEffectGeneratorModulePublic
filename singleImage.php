@@ -1,26 +1,8 @@
 <?php
 
-// ------------------------------ later this whole section can be an separate file ------------------------------
-
-include "./includes/db_connect.php";
-// mysql commands not case-sensitive, so doesnt matter
-$queryString="select * from images order by id desc";
+include "./includes/db_select_image.php";
 
 
-try{
-    $prepared=$conn->prepare($queryString);
-    $prepared->execute();
-    $res=$prepared->setFetchMode(PDO::FETCH_ASSOC);
-    $wait=$prepared->fetchAll();
-    $filename=$wait[0]['filename'];
-}
-// PDOException is an object, I guess its worth to commit that to memory....
-// wow, this is boring...
-catch(PDOException $error){
-    echo "the PDOException error is".$error->getMessage();
-}
-
-// ------------------------------ later this whole section can be an separate file ------------------------------
 
 
 
@@ -29,7 +11,7 @@ $folderString="./uploads/";
 $completeFileString=$folderString.$filename;
 $size=getimagesize($completeFileString);
 $var1=preg_split("/[\/]/",$completeFileString);
- echo $completeFileString;
+
 
 
 
@@ -62,48 +44,7 @@ $var1=preg_split("/[\/]/",$completeFileString);
             <div class="three columns">
                 <div class="navbar">
 
-                    <table>
-
-                        <tr>
-                            <td>
-                                previous
-
-                            </td>
-                            <td>
-                                up
-
-                            </td>
-                            <td>
-                                next
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <a href="./about.html" class="button">About</a>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-
-                            <td colspan="3">
-                                <a href="./forum.html" class="button">Help Forum</a>
-                            </td>
-                        </tr>
-                        <tr>
-
-                            <td colspan="3">
-                                <a href="./contact.html" class="button">Contact</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="3">
-                                <a href="./language.html" class="button">Language</a>
-                            </td>
-                        </tr>
-
-
-                    </table>
+<!-- future navbar?? -->
                 </div>
             </div>
             
@@ -114,15 +55,11 @@ $var1=preg_split("/[\/]/",$completeFileString);
                 <h6>This was taken from a huge real messy project I attempted, that had so many effects, but were quite messy</h6>
 
 
-
                 <table>
                 <form action="switch_cloudEffects.php" method="get">
                     <tr>
                         <td>
-                            <td>
-                                Your uploaded image</br></br>
-                                <input type="submit" class="button button-active" value="process effects (PHP)"  id="oneEffectOnly"/>
-                            </td>
+
 <input type="hidden" name="availableEffects" value="Clouds"/>
                             <td class="photo"><img src="
 <?php
@@ -151,10 +88,7 @@ echo $completeFileString;
 
 
 
-                <form method="POST" action="getdata.php" enctype="multipart/form-data">
-                    <input type="file" name="myimage">
-                    <input type="submit" name="submit_image" value="Upload">
-                </form>
+
 
             </div>
         </div>
